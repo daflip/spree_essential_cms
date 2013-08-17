@@ -1,7 +1,7 @@
 class Spree::PossiblePage
   def self.matches?(request) 
     return false if request.fullpath =~ /(^\/+(admin|account|cart|checkout|content|login|pg\/|orders|products|s\/|session|signup|shipments|states|t\/|tax_categories|user)+)/
-    !Spree::Page.active.find_by_path(request.fullpath).nil?
+    !Spree::Page.active.find_by_path(request.fullpath.to_s.gsub(/\?.*$/, "")).nil?
   end
 end
 
