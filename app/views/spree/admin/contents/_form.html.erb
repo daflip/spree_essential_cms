@@ -61,6 +61,14 @@
     <%= error_message_on :content, :hide_title %>
   <% end %>
 
+  <% [ :custom_field_1, :custom_field_2, :custom_field_3, :custom_field_4, :custom_field_5 ].each do |field_name| %>
+    <%= form.field_container field_name do %>
+      <%= form.label field_name, t("content.#{field_name}") %><br />
+      <%= form.text_area field_name, :class => "text"  %>
+      <%= error_message_on :content, field_name %>
+    <% end %>
+  <% end %>
+
 </div>
 
 <% content_for :head do %>
